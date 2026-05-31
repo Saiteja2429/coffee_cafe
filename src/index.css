@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
@@ -28,4 +28,123 @@ body {
   margin: 10px auto;
   width: 250px;
   border-radius: 8px;
+} */
+
+
+body {
+  margin: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background: #fdf8f3;
+}
+
+/* Navbar */
+.nav {
+  background: #4b2e2e;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #f7c873;
+}
+
+/* Container */
+.container {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.container h1 {
+  color: #4b2e2e;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+/* Filter Buttons */
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.filter-btn {
+  background: #d8f3dc;
+  color: #2d6a4f;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: #95d5b2;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.filter-btn.active {
+  background: #40916c;
+  color: white;
+  box-shadow: 0 8px 15px rgba(64,145,108,0.3);
+}
+
+/* Menu Cards */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card h3 {
+  color: #4b2e2e;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #2d6a4f;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.18);
+  background: linear-gradient(to bottom, #ffffff, #fff8e7);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .container h1 {
+    font-size: 2rem;
+  }
 }
