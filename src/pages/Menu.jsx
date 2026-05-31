@@ -1,77 +1,57 @@
-import { useState } from "react";
+const menuItems = {
+  Coffee: [
+    { name: "Filter Coffee", price: "₹30" },
+    { name: "Espresso", price: "₹50" },
+    { name: "Cappuccino", price: "₹80" },
+    { name: "Latte", price: "₹90" },
+    { name: "Mocha", price: "₹100" },
+    { name: "Cold Coffee", price: "₹80" },
+    { name: "Black Coffee", price: "₹40" }
+  ],
 
-function Menu() {
-  const [selectedCategory, setSelectedCategory] = useState("Coffee");
+  Tea: [
+    { name: "Regular Tea", price: "₹15" },
+    { name: "Masala Tea", price: "₹20" },
+    { name: "Ginger Tea", price: "₹20" },
+    { name: "Lemon Tea", price: "₹20" },
+    { name: "Green Tea", price: "₹30" },
+    { name: "Black Tea", price: "₹20" },
+    { name: "Elaichi Tea", price: "₹20" }
+  ],
 
-  const menuItems = {
-    Coffee: [
-      { name: "Cappuccino", price: "₹120" },
-      { name: "Latte", price: "₹140" },
-      { name: "Espresso", price: "₹110" },
-      { name: "Mocha", price: "₹150" }
-    ],
+  "Veg Snacks": [
+    { name: "Samosa", price: "₹20" },
+    { name: "Veg Puff", price: "₹25" },
+    { name: "French Fries", price: "₹70" },
+    { name: "Veg Sandwich", price: "₹60" },
+    { name: "Grilled Veg Sandwich", price: "₹80" },
+    { name: "Veg Burger", price: "₹80" },
+    { name: "Paneer Burger", price: "₹100" },
+    { name: "Veg Momos", price: "₹70" },
+    { name: "Spring Rolls", price: "₹80" },
+    { name: "Garlic Bread", price: "₹70" }
+  ],
 
-    Tea: [
-      { name: "Masala Tea", price: "₹40" },
-      { name: "Green Tea", price: "₹60" },
-      { name: "Lemon Tea", price: "₹50" },
-      { name: "Ginger Tea", price: "₹45" }
-    ],
+  "Non Veg Snacks": [
+    { name: "Egg Puff", price: "₹35" },
+    { name: "Egg Sandwich", price: "₹70" },
+    { name: "Omelette", price: "₹50" },
+    { name: "Chicken Sandwich", price: "₹120" },
+    { name: "Chicken Burger", price: "₹130" },
+    { name: "Chicken Nuggets (6 pcs)", price: "₹120" },
+    { name: "Chicken Popcorn", price: "₹130" },
+    { name: "Chicken Momos", price: "₹120" },
+    { name: "Chicken Roll", price: "₹120" }
+  ],
 
-    "Veg Snacks": [
-      { name: "Veg Sandwich", price: "₹90" },
-      { name: "French Fries", price: "₹80" },
-      { name: "Veg Burger", price: "₹120" },
-      { name: "Paneer Roll", price: "₹140" }
-    ],
-
-    "Non Veg Snacks": [
-      { name: "Chicken Burger", price: "₹160" },
-      { name: "Chicken Roll", price: "₹170" },
-      { name: "Chicken Sandwich", price: "₹150" },
-      { name: "Chicken Nuggets", price: "₹180" }
-    ],
-
-    Drinks: [
-      { name: "Cold Coffee", price: "₹160" },
-      { name: "Mango Shake", price: "₹120" },
-      { name: "Chocolate Shake", price: "₹140" },
-      { name: "Fresh Lime Soda", price: "₹80" }
-    ]
-  };
-
-  return (
-    <div className="container">
-      <h1>Our Menu</h1>
-
-      {/* Filters */}
-      <div className="filters">
-        {Object.keys(menuItems).map((category) => (
-          <button
-            key={category}
-            className={
-              selectedCategory === category
-                ? "filter-btn active"
-                : "filter-btn"
-            }
-            onClick={() => setSelectedCategory(category)}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {/* Items */}
-      <div className="menu-grid">
-        {menuItems[selectedCategory].map((item, index) => (
-          <div key={index} className="card">
-            <h3>{item.name}</h3>
-            <p>{item.price}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export default Menu
+  Drinks: [
+    { name: "Coca-Cola (250ml)", price: "₹30" },
+    { name: "Sprite (250ml)", price: "₹30" },
+    { name: "Thums Up (250ml)", price: "₹30" },
+    { name: "Fanta (250ml)", price: "₹30" },
+    { name: "Limca (250ml)", price: "₹30" },
+    { name: "Maaza (250ml)", price: "₹30" },
+    { name: "Slice (250ml)", price: "₹30" },
+    { name: "Water Bottle (1L)", price: "₹20" }
+  ]
+};
