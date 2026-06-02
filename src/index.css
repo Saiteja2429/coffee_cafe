@@ -608,13 +608,8 @@ body {
 }
 
 .filter-btn {
-<<<<<<< HEAD
   background: rgba(252, 165, 165, 0.15);
   color: #fda4af;
-=======
-  background: #f5ebe0;
-  color: #4b2e2e;
->>>>>>> 883af4991ae5bd253b8aa3afa8916a0b678865be
   border: none;
   padding: 12px 24px;
   border-radius: 30px;
@@ -702,7 +697,6 @@ body {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
   align-items: center;
   text-align: center;
   overflow: hidden;
@@ -713,93 +707,6 @@ body {
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 16px 32px rgba(75, 46, 46, 0.12);
-=======
-  justify-content: space-between;
-  min-height: 120px;
-  text-align: left;
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.card h3 {
-  color: #4b2e2e;
-  margin: 0 0 10px 0;
-  font-size: 18px;
-}
-
-.card p {
-  color: #a66c4e;
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 15px 30px rgba(75, 46, 46, 0.15);
-  background: linear-gradient(to bottom, #ffffff, #fffdfa);
-}
-
-/* Veg / Non-Veg Badges */
-.badge-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 14px;
-  height: 14px;
-  border: 1.5px solid;
-  border-radius: 3px;
-  padding: 1px;
-  box-sizing: border-box;
-}
-
-.badge-veg {
-  border-color: #2b9348;
-}
-
-.badge-nonveg {
-  border-color: #d90429;
-}
-
-.badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-}
-
-.badge-veg .badge-dot {
-  background-color: #2b9348;
-}
-
-.badge-nonveg .badge-dot {
-  background-color: #d90429;
-}
-
-.badge-text {
-  font-size: 11px;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-left: 6px;
-  letter-spacing: 0.5px;
-}
-
-.badge-text-veg {
-  color: #2b9348;
-}
-
-.badge-text-nonveg {
-  color: #d90429;
->>>>>>> 883af4991ae5bd253b8aa3afa8916a0b678865be
 }
 
 .card-img {
@@ -1296,6 +1203,118 @@ body {
   }
 }
 
+/* Menu Controls (Search & Sort) */
+.menu-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto 35px auto;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(252, 165, 165, 0.25);
+  background: #ffffff;
+  color: #111111;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #fca5a5;
+  box-shadow: 0 0 0 4px rgba(252, 165, 165, 0.15);
+}
+
+.sort-select {
+  padding: 12px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(252, 165, 165, 0.25);
+  background: #ffffff;
+  color: #111111;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #fca5a5;
+  box-shadow: 0 0 0 4px rgba(252, 165, 165, 0.15);
+}
+
+/* Veg / Non-Veg Badges */
+.card-badge-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.veg-indicator {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid #2d6a4f;
+  box-sizing: border-box;
+  padding: 1.5px;
+  border-radius: 2px;
+}
+
+.veg-dot {
+  width: 5px;
+  height: 5px;
+  background-color: #2d6a4f;
+  border-radius: 50%;
+}
+
+.nonveg-indicator {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid #a83232;
+  box-sizing: border-box;
+  padding: 1.5px;
+  border-radius: 2px;
+}
+
+.nonveg-dot {
+  width: 5px;
+  height: 5px;
+  background-color: #a83232;
+  border-radius: 50%;
+}
+
+.badge-text-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-text-label.veg {
+  color: #2d6a4f;
+}
+
+.badge-text-label.nonveg {
+  color: #a83232;
+}
+
 /* Mobile responsive styles */
 @media (max-width: 768px) {
   .menu-grid, .sig-grid, .testimonial-grid, .info-grid {
@@ -1352,5 +1371,16 @@ body {
     flex-direction: column;
     width: 100%;
     max-width: 280px;
+  }
+
+  .menu-controls {
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 10px;
+  }
+
+  .search-input, .sort-select {
+    width: 100%;
+    box-sizing: border-box;
   }
 }

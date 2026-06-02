@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { useState, useEffect } from "react";
-=======
-import { useState } from "react";
->>>>>>> 883af4991ae5bd253b8aa3afa8916a0b678865be
 
 const menuItems = {
   Coffee: [
@@ -62,44 +58,8 @@ const menuItems = {
   ]
 };
 
-<<<<<<< HEAD
-function Menu() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [isLoading, setIsLoading] = useState(true);
-
-  const categories = ["All", ...Object.keys(menuItems)];
-
-  const displayedItems = selectedCategory === "All"
-    ? Object.values(menuItems).flat()
-    : menuItems[selectedCategory] || [];
-
-  useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 450);
-    return () => clearTimeout(timer);
-  }, [selectedCategory]);
-
-  const handleImageError = (e) => {
-    e.target.src = "/images/unsplash_1495474472287-4d71bcdd2085.jpg";
-  };
-
-  return (
-    <div className="container">
-      {isLoading && <div className="top-loading-bar"></div>}
-      <h1 className="bold-black-heading">Our Menu</h1>
-
-      <div className="filters">
-        {categories.map((category) => (
-          <button
-            key={category}
-            className={`filter-btn ${selectedCategory === category ? "active" : ""}`}
-            onClick={() => setSelectedCategory(category)}
-          >
-            {category}
-=======
 const categoryIcons = {
+  All: "🍽️",
   Coffee: "☕",
   Tea: "🍵",
   "Veg Snacks": "🥪",
@@ -108,31 +68,39 @@ const categoryIcons = {
 };
 
 const categoryLabels = {
+  All: "All",
   Coffee: "Coffee",
   Tea: "Tea",
   "Veg Snacks": "Veg Snacks",
-  "Non Veg Snacks": "Non Veg",
+  "Non Veg Snacks": "Non-Veg",
   Drinks: "Drinks"
 };
 
 function Menu() {
-  const [selectedCategory, setSelectedCategory] = useState("Coffee");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("default");
 
-  // Helper to parse price string into number
+  const categories = ["All", ...Object.keys(menuItems)];
+
   const getNumericPrice = (priceStr) => {
     return parseFloat(priceStr.replace(/[^\d.-]/g, "")) || 0;
   };
 
-  // Determine if item is veg or non-veg
-  const isVegCategory = (category) => {
-    return category !== "Non Veg Snacks";
-  };
-
-  // Process items: filter by category, then by search, then sort
   const getProcessedItems = () => {
-    let items = menuItems[selectedCategory] || [];
+    let items = [];
+    if (selectedCategory === "All") {
+      Object.entries(menuItems).forEach(([category, list]) => {
+        list.forEach(item => {
+          items.push({ ...item, category });
+        });
+      });
+    } else {
+      (menuItems[selectedCategory] || []).forEach(item => {
+        items.push({ ...item, category: selectedCategory });
+      });
+    }
 
     // Filter by search
     if (searchQuery.trim() !== "") {
@@ -144,67 +112,49 @@ function Menu() {
 
     // Sort items
     if (sortOrder === "lowToHigh") {
-      items = [...items].sort(
-        (a, b) => getNumericPrice(a.price) - getNumericPrice(b.price)
-      );
+      items.sort((a, b) => getNumericPrice(a.price) - getNumericPrice(b.price));
     } else if (sortOrder === "highToLow") {
-      items = [...items].sort(
-        (a, b) => getNumericPrice(b.price) - getNumericPrice(a.price)
-      );
+      items.sort((a, b) => getNumericPrice(b.price) - getNumericPrice(a.price));
     }
 
     return items;
   };
 
   const processedItems = getProcessedItems();
-  const isVeg = isVegCategory(selectedCategory);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 450);
+    return () => clearTimeout(timer);
+  }, [selectedCategory, searchQuery, sortOrder]);
+
+  const handleImageError = (e) => {
+    e.target.src = "/images/unsplash_1495474472287-4d71bcdd2085.jpg";
+  };
 
   return (
     <div className="container">
-      <h1>Our Menu</h1>
+      {isLoading && <div className="top-loading-bar"></div>}
+      <h1 className="bold-black-heading">Our Menu</h1>
 
       {/* Category Filters */}
       <div className="filters">
-        {Object.keys(menuItems).map((category) => (
+        {categories.map((category) => (
           <button
             key={category}
-            className={
-              selectedCategory === category
-                ? "filter-btn active"
-                : "filter-btn"
-            }
+            className={`filter-btn ${selectedCategory === category ? "active" : ""}`}
             onClick={() => {
               setSelectedCategory(category);
-              setSearchQuery(""); // Reset search on category change for better UX
+              setSearchQuery(""); // Reset search on category change
             }}
           >
             {categoryIcons[category]} {categoryLabels[category]}
->>>>>>> 883af4991ae5bd253b8aa3afa8916a0b678865be
           </button>
         ))}
       </div>
 
-<<<<<<< HEAD
-      {isLoading ? (
-        <div className="loader-container">
-          <div className="spinner"></div>
-        </div>
-      ) : (
-        <div className="menu-grid">
-          {displayedItems.map((item, idx) => (
-            <div key={idx} className="card">
-              <img 
-                src={item.image} 
-                alt={item.name} 
-                className="card-img" 
-                onError={handleImageError}
-              />
-              <p className="card-price">{item.price}</p>
-              <h3 className="card-title">{item.name}</h3>
-            </div>
-          ))}
-        </div>
-=======
       {/* Search and Sort Controls */}
       <div className="menu-controls">
         <input
@@ -226,37 +176,41 @@ function Menu() {
         </select>
       </div>
 
-      {/* Menu Grid */}
-      {processedItems.length > 0 ? (
+      {isLoading ? (
+        <div className="loader-container">
+          <div className="spinner"></div>
+        </div>
+      ) : processedItems.length > 0 ? (
         <div className="menu-grid">
-          {processedItems.map((item, index) => (
-            <div key={index} className="card">
-              <div>
-                <div className="badge-container">
-                  <span className={`badge ${isVeg ? "badge-veg" : "badge-nonveg"}`}>
-                    <span className="badge-dot"></span>
+          {processedItems.map((item, idx) => {
+            const isVeg = item.category !== "Non Veg Snacks";
+            return (
+              <div key={idx} className="card">
+                <img 
+                  src={item.image} 
+                  alt={item.name} 
+                  className="card-img" 
+                  onError={handleImageError}
+                />
+                <p className="card-price">{item.price}</p>
+                <h3 className="card-title">{item.name}</h3>
+                
+                <div className="card-badge-container">
+                  <span className={isVeg ? "veg-indicator" : "nonveg-indicator"}>
+                    <span className={isVeg ? "veg-dot" : "nonveg-dot"}></span>
                   </span>
-                  <span
-                    className={`badge-text ${
-                      isVeg ? "badge-text-veg" : "badge-text-nonveg"
-                    }`}
-                  >
+                  <span className={`badge-text-label ${isVeg ? "veg" : "nonveg"}`}>
                     {isVeg ? "Veg" : "Non-Veg"}
                   </span>
                 </div>
-                <div className="card-header">
-                  <h3>{item.name}</h3>
-                </div>
               </div>
-              <p>{item.price}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       ) : (
-        <div style={{ margin: "40px 0", color: "#4b2e2e", fontSize: "16px" }}>
+        <div style={{ margin: "60px 0", color: "#5c3e3e", fontSize: "1.1rem", fontWeight: "600" }}>
           No items found matching "{searchQuery}"
         </div>
->>>>>>> 883af4991ae5bd253b8aa3afa8916a0b678865be
       )}
     </div>
   );
