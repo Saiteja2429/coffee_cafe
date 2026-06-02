@@ -608,8 +608,13 @@ body {
 }
 
 .filter-btn {
+<<<<<<< HEAD
   background: rgba(252, 165, 165, 0.15);
   color: #fda4af;
+=======
+  background: #f5ebe0;
+  color: #4b2e2e;
+>>>>>>> 883af4991ae5bd253b8aa3afa8916a0b678865be
   border: none;
   padding: 12px 24px;
   border-radius: 30px;
@@ -620,15 +625,63 @@ body {
 }
 
 .filter-btn:hover {
-  background: #95d5b2;
+  background: #e3d5ca;
   transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 15px rgba(75, 46, 46, 0.1);
 }
 
 .filter-btn.active {
-  background: #40916c;
+  background: #4b2e2e;
   color: white;
-  box-shadow: 0 8px 15px rgba(64,145,108,0.3);
+  box-shadow: 0 8px 15px rgba(75, 46, 46, 0.3);
+}
+
+/* Controls */
+.menu-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-input {
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 2px solid #e3d5ca;
+  outline: none;
+  font-size: 15px;
+  width: 250px;
+  background: white;
+  transition: all 0.3s ease;
+  color: #4b2e2e;
+  font-family: inherit;
+}
+
+.search-input:focus {
+  border-color: #4b2e2e;
+  box-shadow: 0 0 8px rgba(75, 46, 46, 0.15);
+}
+
+.sort-select {
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 2px solid #e3d5ca;
+  outline: none;
+  font-size: 15px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #4b2e2e;
+  font-family: inherit;
+}
+
+.sort-select:focus {
+  border-color: #4b2e2e;
 }
 
 /* Menu Cards */
@@ -649,6 +702,7 @@ body {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   align-items: center;
   text-align: center;
   overflow: hidden;
@@ -659,6 +713,93 @@ body {
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 16px 32px rgba(75, 46, 46, 0.12);
+=======
+  justify-content: space-between;
+  min-height: 120px;
+  text-align: left;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card h3 {
+  color: #4b2e2e;
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.card p {
+  color: #a66c4e;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(75, 46, 46, 0.15);
+  background: linear-gradient(to bottom, #ffffff, #fffdfa);
+}
+
+/* Veg / Non-Veg Badges */
+.badge-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid;
+  border-radius: 3px;
+  padding: 1px;
+  box-sizing: border-box;
+}
+
+.badge-veg {
+  border-color: #2b9348;
+}
+
+.badge-nonveg {
+  border-color: #d90429;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.badge-veg .badge-dot {
+  background-color: #2b9348;
+}
+
+.badge-nonveg .badge-dot {
+  background-color: #d90429;
+}
+
+.badge-text {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-left: 6px;
+  letter-spacing: 0.5px;
+}
+
+.badge-text-veg {
+  color: #2b9348;
+}
+
+.badge-text-nonveg {
+  color: #d90429;
+>>>>>>> 883af4991ae5bd253b8aa3afa8916a0b678865be
 }
 
 .card-img {
